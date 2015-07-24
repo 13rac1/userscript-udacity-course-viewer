@@ -1,11 +1,19 @@
 ##Udacity Full Page Course Viewer
 
-Udacity course content viewer displays text content in a 435px tall viewport
-div. This Tampermonkey/GreaseMonkey Userscript removes the viewport and 
-displays the content at full height.
+Udacity Classrom Course Viewer displays text content in a 435px tall viewport
+div. This Tampermonkey/GreaseMonkey Userscript:
 
-Install here: https://openuserjs.org/scripts/eosrei/Udacity_Full_Page_Course_Viewer
+* Removes the viewport and displays text content at full height.
+* Moves the Downloadables section to the main sidebar.
+* Applies HighlightJS code syntax highlighting to code samples.
 
 Example:
-![Example of change](udacity_no_viewport.png?raw=true)
+![Example of change](udacity_full_page_color.png?raw=true)
+
+Install: https://openuserjs.org/scripts/eosrei/Udacity_Full_Page_Course_Viewer
+
+Requires:
+
+* [Tampermonkey](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=en) on Chrome
+* [GreaseMonkey](https://addons.mozilla.org/en-us/firefox/addon/greasemonkey/) on Firefox
 
