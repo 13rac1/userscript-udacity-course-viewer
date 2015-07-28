@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Udacity Full Page Course Viewer
 // @namespace    https://github.com/eosrei/userscript-udacity-course-viewer
-// @version      0.5
+// @version      0.6
 // @description  Makes full page text content in the Udacity Course Viewer instead of the original 435px tall scrolling div. Moves Downloadables to main sidebar, applies HighlightJS to example code.
 // @oujs:author  eosrei
 // @author       eosrei
@@ -47,18 +47,26 @@ function contentScope() {
       viewerControllerScope.oldLoadingComplete(c);
       //console.log("LoadingComplete");
 
-      // Surprisingly loadingComplete() isn't called when loading is complete.
-      // SetTimeout is non-ideal, but it's good enough to do what we need.
-      // @todo: Locate a better function so we don't need to have a timeout.
+      // @todo: loadingComplete() is called often while playing videos. Which means this
+      // setTimeout() function is called many times for every morsel on video pages.
+      // We need it called only once per morsel. Research and locate an Angular Directive
+      // or Controller to extend and correctly provide this functionality.
       setTimeout(function(){
         // Move Downloadables to the main sidebar under the Get Help section.
-        $('div[data-supplemental-materials-list]').insertAfter('div[data-viewer-feedback]');
-        //console.log("Moved Downloads");
+        var downloadables = $('div[data-supplemental-materials-list]');
+        if (!downloadables.data("once")) {
+          downloadables.data("once", true);
+          downloadables.insertAfter('div[data-viewer-feedback]');
+          //console.log("Moved Downloads");
+        };
 
-        // Apply HighlightJS to all example code.
+        // Apply HighlightJS to all example code once.
         $('div.viewer-player pre').each(function(i, block) {
-            //console.log("Code block found");
+          if (!$(block).data("once")) {
+            $(block).data("once", true);
             hljs.highlightBlock(block);
+            //console.log("Code block found");
+          };
         });
       }, 100);
     };
