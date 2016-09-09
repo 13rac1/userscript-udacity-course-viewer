@@ -1,6 +1,8 @@
 ##Udacity Full Page Course Viewer
 
-Udacity Classrom Course Viewer displays text content in a 435px tall viewport
+##No longer needed due to Classroom 2.0 2016 redesign. 
+
+Udacity Classroom 1.0 Course Viewer displays text content in a 435px tall viewport
 div. This Tampermonkey/GreaseMonkey Userscript:
 
 * Removes the viewport and displays text content at full height.
